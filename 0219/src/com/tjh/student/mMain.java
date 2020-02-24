@@ -1,5 +1,6 @@
 package com.tjh.student;
 
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -24,7 +25,7 @@ public class mMain {
 				Scanner scanner2 = new Scanner(System.in);
 				String str2 = scanner2.next();
 				int selectnum2 = Integer.parseInt(str2);
-				int []nums = new int[3] {1,2};
+				
 				switch (selectnum2) {
 				case 1:
 					studentManager.addStudent();
