@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>所有用户</title>
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+	<table style="text-align:center" width="100%" id="datas" border="1px" cellspacing="0" cellpadding="10">
+		<thead>
+			<th>id</th>
+			<th>name</th>
+			<th>password</th>
+			<th>regdate</th>
+		</thead>
+		<tbody id="tbodys" >
+		</tbody>
+	</table>
+</body>
+	<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				type:"get",
+				url:"UserServ",
+				dataType:"json",
+				success:function(response){
+					for(var i=0;i<response.length;i++){
+						console.log(response[i]);
+						var tr = $("<tr></tr>");
+						tr.append("<td>"+response[i].id+"</td>");
+						tr.append("<td>"+response[i].userName+"</td>");
+						tr.append("<td>"+response[i].passWord+"</td>");
+						tr.append("<td>"+response[i].regDate+"</td>");
+						$("#tbodys").append(tr);
+					}
+				}
+			})
+		})
+	</script>
+</html>

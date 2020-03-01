@@ -7,9 +7,17 @@ import java.util.*;
 public class MysqlDemo {
 	
 	ArrayList<Employees> employees;
+	Connection connection = null;
+	
 	public MysqlDemo() {
 		// TODO Auto-generated constructor stub
 		employees = new ArrayList<Employees>();
+		try {
+			connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/neuedu?", "root", "123456");
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 	
 	public void print() {
@@ -20,6 +28,20 @@ public class MysqlDemo {
 			
 		}
 	}
+
+	public void ConnectionClose() {
+		if(null != connection)
+		{
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
+	
 	/**
 	 * @插入新数据
 	 * @param id 主键
@@ -32,7 +54,6 @@ public class MysqlDemo {
 		long starttime = System.currentTimeMillis();
 			
 		PreparedStatement preparedStatement = null;
-		Connection	connection = null;
 		try {
 			//1 注册驱动
 			//2 建立连接
@@ -53,7 +74,6 @@ public class MysqlDemo {
 			// TODO: handle finally clause
 			//7 关闭资源
 			preparedStatement.close();
-			connection.close();
 		}
 		System.out.println("总用时："+ (System.currentTimeMillis() - starttime));
 	}
@@ -71,7 +91,6 @@ public class MysqlDemo {
 		long starttime = System.currentTimeMillis();
 		
 		PreparedStatement preparedStatement = null;
-		Connection	connection = null;
 		try {
 			//1 注册驱动
 			//2 建立连接
@@ -92,7 +111,6 @@ public class MysqlDemo {
 			// TODO: handle finally clause
 			//7 关闭资源
 			preparedStatement.close();
-			connection.close();
 		}
 		System.out.println("总用时："+ (System.currentTimeMillis() - starttime));
 	}
@@ -107,7 +125,6 @@ public class MysqlDemo {
 		long starttime = System.currentTimeMillis();
 		
 		PreparedStatement preparedStatement = null;
-		Connection	connection = null;
 		try {
 			//1 注册驱动
 			//2 建立连接
@@ -125,7 +142,6 @@ public class MysqlDemo {
 			// TODO: handle finally clause
 			//7 关闭资源
 			preparedStatement.close();
-			connection.close();
 		}
 		System.out.println("总用时："+ (System.currentTimeMillis() - starttime));
 	}
@@ -140,7 +156,6 @@ public class MysqlDemo {
 		long starttime = System.currentTimeMillis();
 		this.employees.clear();
 		PreparedStatement preparedStatement = null;
-		Connection	connection = null;
 		ResultSet resultSet = null;
 		try {
 			//1 注册驱动
@@ -167,7 +182,6 @@ public class MysqlDemo {
 			// TODO: handle finally clause
 			//7 关闭资源
 			preparedStatement.close();
-			connection.close();
 		}
 		System.out.println("总用时："+ (System.currentTimeMillis() - starttime));
 	}
@@ -209,7 +223,6 @@ public class MysqlDemo {
 			// TODO: handle finally clause
 			//7 关闭资源
 			preparedStatement.close();
-			connection.close();
 		}
 		System.out.println("总用时："+ (System.currentTimeMillis() - starttime));
 	}

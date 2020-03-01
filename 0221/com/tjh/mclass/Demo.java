@@ -17,7 +17,7 @@ public class Demo {
 			mysqlDemo.select(100);
 			System.out.println("≤È—Ø");
 			mysqlDemo.print();
-			
+			mysqlDemo.ConnectionClose();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
